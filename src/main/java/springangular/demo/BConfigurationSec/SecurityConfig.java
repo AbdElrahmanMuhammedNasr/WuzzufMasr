@@ -18,20 +18,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
-                //    .anyRequest().authenticated()
+                .anyRequest().authenticated()
                 .and()
                 .httpBasic();
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        System.out.println("the user name and password "+new BCryptPasswordEncoder().encode("123"));
-            auth.
+//        System.out.println("the user name and password "+new BCryptPasswordEncoder().encode("123"));
+        auth.
                     inMemoryAuthentication()
-                    .withUser("abdo Nasr").password( new BCryptPasswordEncoder().encode("123")).roles("normal")
+                    .withUser("abdo Nasr").password("{noop}123").roles("USER")
                     .and()
-                    .withUser("El-Tarek Ragab").password(new BCryptPasswordEncoder().encode("ELT")).roles("normal")
+                    .withUser("El-Tarek Ragab").password("{noop}ELT").roles("normal")
                     .and()
-                    .withUser("Mustafa Abdallah").password(new BCryptPasswordEncoder().encode("Mos-tf")).roles("normal");
+                    .withUser("Mustafa Abdallah").password("{noop}Mos-tf"). roles("normal");
     }
 }

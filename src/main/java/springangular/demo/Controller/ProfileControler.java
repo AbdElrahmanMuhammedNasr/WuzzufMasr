@@ -99,14 +99,21 @@ public class ProfileControler {
     }
 
 
-    @DeleteMapping(value = {"deleteItem/{where}/{id}"})
-    public boolean deleteItem(@PathVariable("where") String where,@PathVariable("id") Long id){
-        System.out.println("Delete item s");
-        switch (where){
-            case "experience":  experenceInterface.deleteExperience(id); break;
-            case "project" : projectsInterface.deleteProject(id); break;
-            case "course":courseInterface.deleteCourse(id); break;
+    @RequestMapping(value = {"deleteItem/{where}/{id}"})
+    public void deleteItem(@PathVariable("where") String where,@PathVariable("id") Long id){
+        if(where .equals("experience")){
+            experenceInterface.deleteExperience(id);
+            System.out.println("Delete experience");
+        }else if(where.equals("project")){
+            projectsInterface.deleteProject(id);
+            System.out.println("Delete project");
         }
-        return true;
+        else if(where .equals("course")) {
+            courseInterface.deleteCourse(id);
+            System.out.println("Delete course");
+        }else {
+            System.out.println("check you condition");
+        }
+
     }
 }

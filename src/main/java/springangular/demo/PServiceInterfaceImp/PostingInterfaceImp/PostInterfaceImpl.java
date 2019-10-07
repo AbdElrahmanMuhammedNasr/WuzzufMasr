@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import springangular.demo.OServiceInterface.PostingInterface.PostInterface;
 import springangular.demo.XReposotiry.PostDataRepo;
 import springangular.demo.ZModel.APostData;
+import springangular.demo.ZModel.AnUser;
 
 import java.util.List;
 
@@ -22,5 +23,10 @@ public class PostInterfaceImpl implements PostInterface {
     @Override
     public List<APostData> getAllPosts() {
         return postDataRepo.findAll();
+    }
+
+    @Override
+    public void deletePost(Long id) {
+        postDataRepo.deleteById(id);
     }
 }

@@ -41,6 +41,11 @@ public class PostAndFriendsController {
         postInterface.savePost(postData);
     }
 
+    @RequestMapping(value = {"/delete/post/{id}"})
+    public void deletePost(@PathVariable(value = "id") Long id){
+         postInterface.deletePost(id);
+    }
+
     /********************************************************************/
 
     @GetMapping(value = {"/{username}/getFriends"})
