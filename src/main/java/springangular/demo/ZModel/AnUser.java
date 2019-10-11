@@ -17,11 +17,14 @@ public class AnUser {
     @Id
     @GeneratedValue
     private Long id ;
+    private String myJob;
     private String email;
     private String username;
     private Date dataOfBirth;
     private String phone;
+    private String city;
     private String gender;
+    private String shortCut;
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JsonIgnore

@@ -34,6 +34,11 @@ public class PostAndFriendsController {
         return  postInterface.getAllPosts();
     }
 
+    @GetMapping(value = {"/getPost/{postId}"})
+    public APostData getPost(@PathVariable(value = "postId") Long id){
+        return postInterface.getPost(id);
+    }
+
     @PostMapping(value = {"{username}/savePost"})
     private  void savePost(@PathVariable("username") String username,@RequestBody APostData postData){
         postData.setUser(userInterface.getOneUser(username));

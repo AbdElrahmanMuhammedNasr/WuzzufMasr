@@ -9,4 +9,5 @@ public interface PostInterface {
     APostData savePost (APostData post);
     List<APostData> getAllPosts ();
     void deletePost( Long id);
+    APostData getPost(Long id);
 }

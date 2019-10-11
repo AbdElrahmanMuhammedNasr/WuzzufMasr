@@ -29,4 +29,9 @@ public class PostInterfaceImpl implements PostInterface {
     public void deletePost(Long id) {
         postDataRepo.deleteById(id);
     }
+
+    @Override
+    public APostData getPost(Long id) {
+        return postDataRepo.findById(id).get();
+    }
 }
